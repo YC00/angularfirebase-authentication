@@ -40,10 +40,11 @@
             <h1 class="h2">API Key</h1>
           </div>
           <!-- Show user data when logged in -->
-          <div class="row" *ngIf="authService.userData as user">
+          <div class="row">
             <div class="col-md-12">
                 <div class="formGroup">
                   <input type="password" class="formControl" placeholder="API Key" #apikey required>
+                  <input type="button" class="btn" value="{{ toggle? 'Hide password' : 'Show password'}}" (click)="toggle = !toggle" >
                 </div>
             </div>
           </div>
