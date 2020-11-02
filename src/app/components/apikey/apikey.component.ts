@@ -9,27 +9,23 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ['./apikey.component.css']
 })
 export class ApikeyComponent implements OnInit {
-  apikeyval;
-  id;
-  toggle;
-
+  show: boolean;
   constructor(
     public authService: AuthService,
     public router: Router,
-    public ngZone: NgZone,
-    private http: HttpClient,
-    private route: ActivatedRoute
-  ) { 
-    this.route.queryParams.subscribe(params => {
-      this.id = params['id']
-    })
+    public ngZone: NgZone
+  ) {
+    this.show = false;
   }
 
-  ngOnInit(): void {
-    this.http.get<any>('http://localhost:8080/apiket?id='+this.id).subscribe(data => {
-      this.apikeyval = data.token;
-    })
+  ngOnInit() { 
+    this.authService.GetAPIKey('123').subscribe((data: any[])=>{
+      console.log(data);
+    }) 
   }
 
+  showPassword(){
+    this.show = !this.show;
+  }
 
 }

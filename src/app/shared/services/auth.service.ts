@@ -1,4 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { User } from "../services/user";
 import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
@@ -13,6 +14,7 @@ export class AuthService {
   userData: any; // Save logged in user data
 
   constructor(
+    private http: HttpClient,
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
@@ -125,4 +127,8 @@ export class AuthService {
     })
   }
 
+  // Get API KEY
+  GetAPIKey(userId) {
+    return this.http.get("https://helloworld-python-cytlm4ghoq-uc.a.run.app/update_credit");
+  }
 }
