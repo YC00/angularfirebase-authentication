@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { AuthService } from "../../shared/services/auth.service";
-import { Router } from "@angular/router";
+import { Router,ActivatedRoute } from "@angular/router";
 
 
 @Component({
@@ -13,9 +13,16 @@ export class DashboardComponent implements OnInit {
   constructor(
     public authService: AuthService,
     public router: Router,
-    public ngZone: NgZone
+    public ngZone: NgZone,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() { }
 
+  apikey(){
+    const user = this.authService.userData;
+    if(user){
+      this.router.navigate(['apikey'], { queryParams: {id: user.uid} });
+    }
+  }
 }
