@@ -5,6 +5,7 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from "@angular/router";
+import { Observable, from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -128,7 +129,7 @@ export class AuthService {
   }
 
   // Get API KEY
-  GetAPIKey(userId) {
-    return this.http.get("https://helloworld-python-cytlm4ghoq-uc.a.run.app/update_credit");
+  GetAPIKey(userId): Observable<any> {
+    return this.http.get("http://localhost:8080/apikey?id=2sRhpcmkHcR5Fihnwmv0WhCV8k92");
   }
 }
