@@ -41,12 +41,19 @@
         </div>
         <!-- Show user data when logged in -->
         <div class="row" *ngIf="authService.userData as user">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <div class="media">
               <div class="media-body">
                 <p>Keep this API key in a secret: </p>
-                <p><input [type]="show ? 'text' : 'password'" class="formControl" placeholder="API KEY" value="{{apiKey}}" />
-                  <input type="button" class="btn btnPrimary" [value]="show? 'Hide Key' : 'Show Key'" (click)="showPassword()"></p>
+                <p><input [type]="show ? 'text' : 'password'" class="formControl" placeholder="API KEY" value="{{apiKey}}" /></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="media">
+              <div class="media-body">
+                <p>&nbsp;</p>
+                <p><i [className]="show? 'fas fa-eye-slash' : 'fas fa-eye'" (click)="showPassword()"></i></p>
               </div>
             </div>
           </div>
